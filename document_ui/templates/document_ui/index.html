@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Document Scanner</title>
+</head>
+<body>
+    <h1>Upload and Preview</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if uploaded_image_url %}
+        <h2>Original Image</h2>
+        <img src="{{ uploaded_image_url }}" alt="Uploaded" width="300">
+    {% endif %}
+
+    {% if processed_image_url %}
+        <h2>Processed Preview</h2>
+        <img src="{{ processed_image_url }}" alt="Processed" width="300">
+    {% endif %}
+</body>
+</html>
